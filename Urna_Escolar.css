@@ -1,7 +1,10 @@
 :root {
+    color-scheme: light;
     font-family: Arial, sans-serif;
-    color: #3f3037;
-    background: #f9edf2;
+    color: #172b3d;
+    background: #edf2f7;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
 }
 
 * {
@@ -9,121 +12,257 @@
 }
 
 body {
+    min-width: 320px;
     min-height: 100vh;
     margin: 0;
+    padding: 24px;
     display: grid;
     place-items: center;
-    padding: 24px;
-    background: #f9edf2;
 }
 
 .painel {
-    width: min(100%, 520px);
-    padding: 36px;
-    border: 1px solid #e8d5de;
-    border-radius: 8px;
+    width: min(100%, 620px);
+    padding: clamp(20px, 5vw, 40px);
     background: #fff;
-    box-shadow: 0 3px 12px rgba(70, 35, 50, 0.06);
+    border: 1px solid #d5e0ea;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgb(23 43 61 / 10%);
+}
+
+.cabecalho {
     text-align: center;
 }
 
-.etiqueta {
-    color: #a33d68;
-    font-size: 0.9rem;
-    font-weight: 600;
+.identidade {
+    margin: 0;
+    color: #a14e9d;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
 }
 
 h1 {
-    margin: 14px 0 8px;
-    color: #a33d68;
-    font-size: 2rem;
+    margin: 8px 0;
+    color: #e955dd;
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
 }
 
 h2 {
+    margin-top: 0;
+    color: #420344;
+    font-size: 1.3rem;
+}
+
+p {
+    line-height: 1.55;
+}
+
+.escola {
     margin: 0;
-    color: #55434c;
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.5;
+    color: #bd48b7;
 }
 
-.instrucao {
-    margin: 24px 0 18px;
-    color: #65545c;
+.aviso-prototipo {
+    margin: 24px 0;
+    padding: 12px 14px;
+    border-left: 4px solid #5597ee;
+    border-radius: 4px;
+    background: #fff6e5;
+    color: hsl(202, 71%, 46%);
+    font-size: 0.9rem;
 }
 
-form {
+.status-prazo {
+    padding: 12px;
+    border-radius: 6px;
+    background: #f0e8f4;
+    color: #420344;
+    font-weight: 700;
+    text-align: center;
+}
+
+.status-prazo.encerrado {
+    background: #fff1f0;
+    color: #8d1d19;
+}
+
+.etapas {
     display: grid;
-    gap: 10px;
-    text-align: left;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 24px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.etapas li {
+    padding: 9px 5px;
+    border-bottom: 3px solid #d5e0ea;
+    color: #a74faf;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.etapas li[aria-current="step"] {
+    border-color: #b756d4;
+    color: #c928c9;
+    font-weight: 700;
+}
+
+.chapas {
+    margin: 24px 0;
+    padding: 18px;
+    border: 1px solid #d5e0ea;
+    border-radius: 10px;
+    background: #f7f9fb;
+}
+
+.chapas h2 {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.chapas ul {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chapas li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.numero-chapa {
+    display: inline-grid;
+    width: 42px;
+    height: 36px;
+    place-items: center;
+    border-radius: 6px;
+    background: #e4edf5;
+    color: #a52389;
+    font-weight: 700;
+}
+
+form,
+.acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 label {
-    color: #3f3037;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 input {
     width: 100%;
-    min-height: 44px;
-    padding: 0 12px;
-    border: 1px solid #cdbdc5;
-    border-radius: 5px;
-    outline: none;
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1px solid #b33096;
+    border-radius: 6px;
     background: #fff;
-    color: #3f3037;
+    color: #d63fe4;
     font: inherit;
 }
 
-input::placeholder {
-    color: #94858c;
-}
-
-input:focus {
-    border-color: #a33d68;
-    box-shadow: 0 0 0 2px rgba(163, 61, 104, 0.12);
-}
-
-button {
-    min-height: 44px;
-    margin-top: 2px;
-    border: 0;
-    border-radius: 5px;
-    background: #a33d68;
-    color: #fff;
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #873052;
-}
-
+input:focus-visible,
 button:focus-visible {
-    outline: 2px solid #873052;
+    outline: 3px solid #e6a700;
     outline-offset: 3px;
 }
 
-#mensagem {
-    margin: 0;
+button {
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: #cf2ac2;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
 }
 
-h3 {
-    margin: 26px 0 8px;
-    color: #a33d68;
+button:hover {
+    background: #a32cb3;
+}
+
+.botao-secundario {
+    border-color: #b931ae;
+    background: #fff;
+    color: #ca33be;
+}
+
+.botao-secundario:hover {
+    background: #edf3f8;
+}
+
+.botao-texto {
+    border-color: transparent;
+    background: transparent;
+    color: #b635dd;
+    text-decoration: underline;
+}
+
+.botao-texto:hover {
+    background: #edf3f8;
+    color: #e72dd8;
+}
+
+.mensagem {
+    min-height: 1.5em;
+    margin: 0;
+    color: #a12622;
+    font-weight: 700;
+}
+
+.erro {
+    padding: 12px;
+    border: 1px solid #a12622;
+    border-radius: 6px;
+    background: #fff1f0;
+}
+
+.resumo-voto {
+    padding: 16px;
+    border-radius: 8px;
+    background: #edf3f8;
+    color: #ca31a9;
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
-.rodape {
-    margin: 0;
-    color: #76656d;
-    font-size: 0.92rem;
+.resultado-contagens {
+    display: grid;
+    gap: 8px;
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 @media (max-width: 480px) {
+    body {
+        padding: 12px;
+        place-items: start center;
+    }
+
     .painel {
-        padding: 28px 22px;
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+
+    .etapas {
+        gap: 3px;
+    }
+
+    .etapas li {
+        font-size: 0.75rem;
     }
 }

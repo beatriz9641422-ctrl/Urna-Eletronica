@@ -1,27 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urna Eletrônica</title>
-    <link rel="stylesheet" href="Urna_Escolar.css">
-</head>
-<body>
-    <main class="painel">
-        <span class="etiqueta">Eleição escolar • 2026</span>
-        <h1>Urna Eletrônica</h1>
-        <h2>Eleição da Escola Estadual Duarte de Abreu</h2>
-        <p class="instrucao">Para começar, informe seu nome.</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#123b67">
+        <title>Urna Eletrônica Escolar</title>
+        <link rel="stylesheet" href="Urna_Escolar.css">
+        <script src="Urna_Escolar.js" defer></script>
+    </head>
+    <body>
+        <main class="painel">
+            <header class="cabecalho">
+                <p class="identidade">ELEIÇÃO ESCOLAR · 2026</p>
+                <h1>Urna Eletrônica Escolar</h1>
+                <p class="escola">Escola Estadual Duarte de Abreu</p>
+            </header>
 
-        <form id="form-identificacao" action="#" method="post">
-            <label for="nome">Nome:</label>
-            <input id="nome" name="nome" type="text" placeholder="Digite seu nome" autocomplete="name">
-            <button type="submit">Continuar</button>
-            <p id="mensagem" aria-live="polite"></p>
-        </form>
+            <p class="aviso-prototipo">
+                Protótipo demonstrativo. Os dados ficam somente neste navegador e não substituem o registro oficial de uma eleição.
+            </p>
 
-        <h3>Pronto para votar?</h3>
-        <p class="rodape">Seu voto ajuda a construir o futuro da escola.</p>
-    </main>
-</body>
+            <p id="status-prazo" class="status-prazo" role="timer" aria-live="off"></p>
+
+            <ol class="etapas" aria-label="Etapas da votação">
+                <li id="passo-identificacao" aria-current="step">Identificação</li>
+                <li id="passo-escolha">Escolha</li>
+                <li id="passo-revisao">Revisão</li>
+                <li id="passo-conclusao">Resultado</li>
+            </ol>
+
+            <section class="chapas" aria-labelledby="chapas-heading">
+                <h2 id="chapas-heading">Chapas disponíveis</h2>
+                <ul>
+                    <li><span class="numero-chapa">10</span><span>Inovação</span></li>
+                    <li><span class="numero-chapa">20</span><span>Futuro</span></li>
+                    <li><span class="numero-chapa">30</span><span>Transformação</span></li>
+                </ul>
+            </section>
+
+            <p id="mensagem-armazenamento" class="mensagem erro" role="alert" tabindex="-1" hidden></p>
+
+            <section id="etapaIdentificacao" aria-labelledby="identificacao-heading">
+                <h2 id="identificacao-heading" tabindex="-1">Identificação do aluno</h2>
+                <p>Digite um código para se identificar. Cada código pode ser usado uma única vez neste navegador.</p>
+                <form id="formIdentificacao" novalidate>
+                    <label for="codigoAluno">Código do aluno</label>
+                    <input
+                        type="text"
+                        id="codigoAluno"
+                        name="codigoAluno"
+                        placeholder="Digite seu código"
+                        autocomplete="off"
+                        autocapitalize="characters"
+                        aria-describedby="mensagem"
+                        required
+                    >
+                    <p id="mensagem" class="mensagem" role="alert" aria-live="assertive"></p>
+                    <button type="submit">Continuar</button>
+                </form>
+            </section>
+
+            <section id="etapaVotacao" aria-labelledby="escolha-heading" hidden>
+                <h2 id="escolha-heading" tabindex="-1">Escolha sua chapa</h2>
+                <p>Digite o número de uma das chapas listadas acima.</p>
+                <form id="form-votacao" novalidate>
+                    <label for="chapa">Número da chapa</label>
+                    <input
+                        id="chapa"
+                        name="chapa"
+                        type="number"
+                        min="10"
+                        max="30"
+                        step="10"
+                        inputmode="numeric"
+                        aria-describedby="mensagem-voto"
+                        required
+                    >
+                    <p id="mensagem-voto" class="mensagem" role="alert" aria-live="assertive"></p>
+                    <button type="submit">Revisar escolha</button>
+                    <button id="cancelar-votacao" class="botao-secundario" type="button">Cancelar votação</button>
+                </form>
+            </section>
+
+            <section id="etapaRevisao" aria-labelledby="revisao-heading" hidden>
+                <h2 id="revisao-heading" tabindex="-1">Confira seu voto</h2>
+                <p id="resumo-voto" class="resumo-voto"></p>
+                <p>O voto só será registrado quando você confirmar.</p>
+                <div class="acoes">
+                    <button id="confirmar-voto" type="button">Confirmar voto</button>
+                    <button id="alterar-voto" class="botao-secundario" type="button">Voltar e alterar</button>
+                    <button id="cancelar-revisao" class="botao-texto" type="button">Cancelar votação</button>
+                </div>
+            </section>
+
+            <section id="etapaConclusao" aria-labelledby="conclusao-heading" hidden>
+                <h2 id="conclusao-heading" tabindex="-1">Voto confirmado</h2>
+                <p role="status" aria-live="polite">Seu voto foi registrado. Obrigado por participar.</p>
+                <button id="proximo-eleitor" type="button">Próximo eleitor</button>
+            </section>
+
+            <section id="etapaResultado" aria-labelledby="resultado-heading" hidden>
+                <h2 id="resultado-heading" tabindex="-1">Votação encerrada</h2>
+                <p id="resultado-vencedora" role="status" aria-live="polite"></p>
+                <h3>Apuração</h3>
+                <ul id="resultado-contagens" class="resultado-contagens"></ul>
+            </section>
+        </main>
+    </body>
 </html>
