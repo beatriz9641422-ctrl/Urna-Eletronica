@@ -1,0 +1,32 @@
+{
+    "projeto": {
+        "nome": "Urna Eletrônica Escolar",
+        "ano_eleitoral": 2026,
+        "tipo": "prototipo demonstrativo",
+        "aviso": "Os dados deste protótipo não substituem o registro oficial de uma eleição."
+    },
+    "chapas": [
+        {
+            "numero": 10,
+            "nome": "Inovação"
+        },
+        {
+            "numero": 20,
+            "nome": "Futuro"
+        },
+        {
+            "numero": 30,
+            "nome": "Transformação"
+        }
+    ],
+    "configuracao_votacao": {
+        "horario_encerramento": "09:25",
+        "fuso_horario": "-03:00",
+        "data_encerramento_atual_no_javascript": "2026-11-06"
+    },
+    "armazenamento": {
+        "tipo_atual": "localStorage",
+        "chave": "urnaEscolar.estado.v1",
+        "observacao": "O JavaScript atual salva os votos somente no navegador. Este arquivo JSON contém configurações e chapas, não votos nem dados de estudantes."
+    }
+}
