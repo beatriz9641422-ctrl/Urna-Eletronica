@@ -1,9 +1,15 @@
 {
     "projeto": {
         "nome": "Urna Eletrônica Escolar",
+        "escola": "Escola Estadual Duarte de Abreu",
         "ano_eleitoral": 2026,
-        "tipo": "prototipo demonstrativo",
-        "aviso": "Os dados deste protótipo não substituem o registro oficial de uma eleição."
+        "tipo": "protótipo demonstrativo"
+    },
+    "arquivos": {
+        "html": "Urna_Escolar(1).html",
+        "css": "Urna_Escolar(1).css",
+        "javascript_referenciado_no_html": "Urna_Escolar.js",
+        "css_referenciado_no_html": "Urna_Escolar.css"
     },
     "chapas": [
         {
@@ -19,14 +25,9 @@
             "nome": "Transformação"
         }
     ],
-    "configuracao_votacao": {
-        "horario_encerramento": "09:25",
-        "fuso_horario": "-03:00",
-        "data_encerramento_atual_no_javascript": "2026-11-06"
-    },
-    "armazenamento": {
-        "tipo_atual": "localStorage",
-        "chave": "urnaEscolar.estado.v1",
-        "observacao": "O JavaScript atual salva os votos somente no navegador. Este arquivo JSON contém configurações e chapas, não votos nem dados de estudantes."
-    }
+    "observacoes": [
+        "O HTML enviado referencia Urna_Escolar.css, mas o arquivo CSS enviado está nomeado Urna_Escolar(1).css.",
+        "O HTML referencia Urna_Escolar.js, mas o arquivo JavaScript não foi enviado nesta mensagem.",
+        "Este JSON registra informações do projeto; o HTML e o JavaScript precisam ser programados para carregar e utilizar este arquivo."
+    ]
 }
